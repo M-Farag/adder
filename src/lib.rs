@@ -27,6 +27,11 @@ fn add_two(x:i32) -> i32
     x + 2
 }
 
+fn greeting(name:&str) -> String
+{
+    format!("Hello {}",name)
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
@@ -61,5 +66,11 @@ mod tests {
     #[test]
     fn assert_add_two_return_right_result() {
         assert_eq!(4, add_two(2));
+    }
+
+    #[test]
+    fn test_greeting_contain_name() {
+        let greeting_output = greeting("john");
+        assert!(greeting_output.contains("john"),"We got {}",greeting_output);
     }
 }
