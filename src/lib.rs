@@ -21,6 +21,20 @@ impl Rectangle {
     }
 }
 
+struct Guess {
+    value:i32
+}
+
+impl Guess {
+    fn new(value:i32) -> Self
+    {
+        if value > 100 || value < 0 {
+            panic!("Only numbers between {} and {} are allowed",0,100);
+        }
+        Self { value }
+    }
+}
+
 
 fn add_two(x:i32) -> i32
 {
@@ -72,5 +86,12 @@ mod tests {
     fn test_greeting_contain_name() {
         let greeting_output = greeting("john");
         assert!(greeting_output.contains("john"),"We got {}",greeting_output);
+    }
+
+    #[test]
+    #[should_panic(expected="Only numbers between")]
+    fn test_guess_struct_panic_if_value_great_than_100()
+    {
+        let x = Guess::new(200);
     }
 }
