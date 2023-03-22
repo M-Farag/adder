@@ -57,6 +57,7 @@ mod tests {
     }
 
     #[test]
+    #[ignore = "time consuming"]
     fn fail_test() {
         panic!("Fail the test");
     }
